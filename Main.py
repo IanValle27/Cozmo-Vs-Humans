@@ -18,11 +18,13 @@ If all letters are guess correctly Cozmo will congratulate the player with a pic
 
 '''
 
-import cozmo, Player, Wordbank, Game, Input, Display
+import cozmo, Player, Wordbank, Game, Input, Displaygit 
 
 
 def cozmo_program(robot: cozmo.robot.Robot):
-    robot.say_text("I'll be back").wait_for_completed()
+    '''robot.say_text("I'll be back").wait_for_completed()'''
+	
+	'''Start Looking for Players'''
 
 
 cozmo.run_program(cozmo_program)

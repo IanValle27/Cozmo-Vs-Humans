@@ -1,7 +1,8 @@
 '''Cozmo Hangman
-Files: Main, Player, Wordbank, Game, Input, Display
+Files: Main, Player, Wordbank, Game, Input, Display, Search
 
 Make Cozmo spin and count up how many players with facial recognition, name and points for each.
+	Search.py
 	Player.py
 Cozmo will then start a game of hangman with a random word
 	Wordbank.py
@@ -17,14 +18,26 @@ If all letters are guess correctly Cozmo will congratulate the player with a pic
 	
 
 '''
+import time
+import asyncio
 
-import cozmo, Player, Wordbank, Game, Input, Displaygit 
+import cozmo
+
+import Player, Wordbank, Game, Input, Display, Search
 
 
-def cozmo_program(robot: cozmo.robot.Robot):
-    '''robot.say_text("I'll be back").wait_for_completed()'''
+def cozmo_program(robot: cozmo.robot.Robot):	
+
+	robot.say_text("Welcome to cozmo versus human, hangman edition").wait_for_completed()
+	robot.say_text("let's see how many players we have today").wait_for_completed()
 	
 	'''Start Looking for Players'''
+	search = Search(robot)
+	search.LookForPlayers()
+	
+	
+	
+	
 
 
 cozmo.run_program(cozmo_program)

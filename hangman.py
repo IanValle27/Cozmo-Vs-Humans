@@ -43,8 +43,8 @@ def players(robot):
             break
         elif (more_players == "yes"):
             break
-
-    print_player_names(players, robot)
+    
+    print_player_names(len(player_names), robot)
     hangman(robot)
     # print("The current players are: {}".format(player_names))
     

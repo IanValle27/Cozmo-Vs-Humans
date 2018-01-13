@@ -116,7 +116,7 @@ def add_player_to_list(players, robot):
     for name in range(players):
         robot.say_text("What is your name player: ").wait_for_completed()
         name = (input("What is your name Player: "))
-        playerData.append(Player(name, 0)
+        playerData.append(Player(name, 0))
         #player_names.append(name)
         #player_scores.append(0)
 

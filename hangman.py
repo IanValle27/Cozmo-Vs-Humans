@@ -70,6 +70,7 @@ def hangman(robot):
     while(True):        
         check_win_condition(lives, guess, word_to_guess,robot)
 
+        print("If you would like to check the scores, type in score")
         print("Word: ", end='')
         for i in guess:
             print(i,' ', end='')
@@ -84,7 +85,10 @@ def hangman(robot):
         robot.say_text("What is your guess: {}? " .format(player_names[current_player])).wait_for_completed()
         input_guess = input("\nWhat is your guess {}? " .format(player_names[current_player]))
         print("")
-        if (len(input_guess) > 1):
+        if (len(input_guess) > 1 or input_guess == "score"):
+            if(input_guess == "score"):
+                print_scores(robot)
+                continue
             robot.say_text("Please only input one letter").wait_for_completed()
             print("Please only input 1 letter")
             continue
@@ -99,11 +103,13 @@ def hangman(robot):
         elif (flag == 0):
             lives = lives - 1
 
-        print("===============")
-        robot.say_text("Current Scores").wait_for_completed()
-        print("Current Scores")
-        print_player_names(len(player_names), robot)
-        print("===============")
+        # print("===============")
+        # robot.say_text("Current Scores").wait_for_completed()
+        # print("Current Scores")
+        # print_player_names(len(player_names), robot)
+        # print("===============")
+
+        # print_scores(robot)
 
         if (current_player >= (number_of_players - 1)):
             current_player = 0
@@ -224,7 +230,13 @@ def print_player_names(players, robot):
         robot.say_text(player_names[item]).wait_for_completed()
         print(player_names[item],end=': ') 
         print(player_scores[item])
-        
+
+def print_scores(robot):
+        print("===============")
+        robot.say_text("Current Scores").wait_for_completed()
+        print("Current Scores")
+        print_player_names(len(player_names), robot)
+        print("===============")
 
 def game(robot):
     players(robot)

@@ -2,9 +2,7 @@ import random
 
 player_names = []
 # word_to_guess = None
-lives = 6
 letters_missed = []
-guess = None
 
 def players():
     print("----------------------")
@@ -35,8 +33,11 @@ def players():
     
 def hangman():
     word_to_guess = random_words()
+    print("Word to guess: {}" .format(word_to_guess))
     word_length = len(word_to_guess)
     guess = ['_' for i in range(word_length)]
+    lives = 6
+    flag = None
 
     print("====================================================")
     print("\nLet us begin the game!")
@@ -50,23 +51,34 @@ def hangman():
             
         print()
 
+        if (lives == 0):
+            print("\nYou have run out of lives. Better luck next time!")
+            print("The correct word was {}\n" .format(word_to_guess.upper()))
+            exit()
+        if (not '_' in guess):
+            print("\nCongratulations! You figured out the word.")
+            exit()
+
         print("Lives: {}" .format(lives))
         print("Misses: ", end = '')
         for i in letters_missed:
             print(i,' ',end='')
 
-        input_guess = input("What is your guess? ")
+        input_guess = input("\nWhat is your guess? ")
 
-        if (len(input) > 1):
+        if (len(input_guess) > 1):
             print("Please only input 1 letter")
             continue
-        elif (input.isalpha()):
-            check_letter(input, word_length, word_to_guess)
-        
-        
-    
+        elif (input_guess.isalpha()):
+            flag = check_letter(input_guess.upper(), word_to_guess.upper())
 
-
+        if (flag == 1):
+            for i in range(word_length):
+                if(word_to_guess[i] == input_guess):
+                    guess[i] = input_guess.upper()
+        elif (flag == 0):
+            lives = lives - 1
+  
 def add_player_to_list(players):
     for name in range(players):
         name = (input("What is your name Player: "))
@@ -76,10 +88,17 @@ def random_words():
     words = ["headline", "soup", "filter", "command", "mass", "truck", "tumble", "flourish", "squash", "mouth"]
     return random.choice(words)
 
-def check_letter(letter, word_length, word_to_guess):
-    for i in range(word_length):
-
-
+def check_letter(letter, word_to_guess):
+    flag = 0
+    
+    if (letter in word_to_guess): 
+            flag = 1
+    if (flag == 0):
+        if (not letter in letters_missed):
+            letters_missed.append(letter.upper())
+    
+    return flag
+    
 def print_player_names():
     print("\nThe current players are: ")
     for name in player_names:

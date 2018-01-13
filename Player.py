@@ -1,12 +1,9 @@
 class Player:
 	"""Maintains Player's faces, name and score"""
 	
-	kind = 'human'
-	searching = false
-	
-	def __init__(self, name):
+	def __init__(self, name = None, points = None):
 		self.name = name
-		self.points = int()
+		self.points = points
 		
 		
 		

@@ -1,4 +1,5 @@
 import random
+from collections import defaultdict
 
 player_names = []
 player_scores = []
@@ -42,7 +43,7 @@ def players():
     
 def hangman():
     word_to_guess = random_words()
-    # print("Word to guess: {}" .format(word_to_guess))
+    print("Word to guess: {}" .format(word_to_guess))
     word_length = len(word_to_guess)
     guess = ['_' for i in range(word_length)]
     lives = 6
@@ -128,13 +129,22 @@ def check_win_condition(lives, guess, word_to_guess):
                     print("Wrong input. Please input yes or no")
                 elif (play_again == "yes"):
                     print("\n")
+                    
+                    del player_names[:]
+                    del player_scores[:]
+                    del letters_missed[:]
+
                     game()
                 elif (play_again == "no"):
                     print("")
                     exit()
         
         if (not '_' in guess):
+            print("")
             print("Congratulations! You figured out the word.")
+            print("The word was {}" .format(word_to_guess.upper()))
+            check_higher_score()
+            print("")
 
             while(True):
                 play_again = input("Would you like to play again? (Yes/No) ").lower()
@@ -142,10 +152,44 @@ def check_win_condition(lives, guess, word_to_guess):
                     print("Wrong input. Please input yes or no")
                 elif (play_again == "yes"):
                     print("\n")
+                    
+                    del player_names[:]
+                    del player_scores[:]
+                    del letters_missed[:]
+                    
                     game()
                 elif (play_again == "no"):
                     print("")
                     exit()
+
+def check_higher_score():
+    # if (len(player_scores != len(set(player_scores)))):
+    #     print("More than 1 person ")
+
+    duplicates = defaultdict(list)
+    for i,item in enumerate(player_scores):
+        duplicates[item].append(i)
+    duplicates = {k:v for k,v in duplicates.items() if len(v)>1}
+
+    if not duplicates:
+        max_score = max(player_scores)
+        max_score_index = player_scores.index(max_score)
+
+        print("{} got the highest score with {} points!" .format(player_names[max_score_index], max_score))
+    else:
+        max_score = max(player_scores)
+        print("Multiple players achieved a high score of {}!" .format(max_score))
+
+    # dups = defaultdict(list)
+    # for i, e in enumerate(player_scores):
+    #     dups[e].append(i)
+    # for k, v in sorted(dups.items()):
+    #     if len(v) >= 2:
+    #         print('K:%s: V:%r' % (k, v))
+    #     for values in v:
+    #         print("Players {} " .format(player_names[values]), end='')
+
+    #         print("got: ", end='')
 
 def print_player_names(players):
     print("\nThe current players are: ")

@@ -4,18 +4,18 @@ Language: Python
 
 This program uses the Cozmo SDK and command line input to have Anki's Cozmo robot host a game of hangman
 
-#####Requirements
+##### Requirements
 
 * Hardware
-  *Cozmo robot
+  * Cozmo robot
 * Software
-  *Python (Computer)
-  *Cozmo app running in SDK mode (Phone)
+  * Python (Computer)
+  * Cozmo app running in SDK mode (Phone)
   
 ##### Executing
 
-*Execute Python file (.py files) at the command line:
-  *Py hangman.py
+* Execute Python file (.py files) at the command line:
+  * Py hangman.py
 
 
 

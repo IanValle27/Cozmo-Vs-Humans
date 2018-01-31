@@ -7,10 +7,15 @@ This program uses the Cozmo SDK and command line input to have Anki's Cozmo robo
 ##### Requirements
 
 * Hardware
+  *Computer
+  *Mobile Device + USB Cable
   * Cozmo robot
-* Software
-  * Python (Computer)
-  * Cozmo app running in SDK mode (Phone)
+* Computer Software
+  * Python
+  * Android Debug Bridge (Android Devices)
+  * iTunes (Ios Devices)
+* Mobile Software
+  * Cozmo app running in SDK mode
   
 ##### Executing
 

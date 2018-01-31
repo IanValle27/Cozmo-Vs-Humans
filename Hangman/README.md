@@ -1,10 +1,22 @@
-#In order to run:
+#### Hangman
 
-1)Either open up a command line interface to the source code folder within here and run (py hangman.py) within the command line 		interface
+Language: Python
 
-2)Go to the runnable folder and run the hangman file in there.
+This program uses the Cozmo SDK and command line input to have Anki's Cozmo robot host a game of hangman
 
-#Need to have a Cozmo connected to the computer using the SDK. If no cozmo is found then the program will not work. 
+#####Requirements
+
+* Hardware
+  *Cozmo robot
+* Software
+  *Python (Computer)
+  *Cozmo app running in SDK mode (Phone)
+  
+##### Executing
+
+*Execute Python file (.py files) at the command line:
+  *Py hangman.py
+
 
 
 
